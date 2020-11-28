@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=Yeseva+One&display=swap');
+
+* {
+    font-family: 'Yeseva One', cursive;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+h4 {
+    letter-spacing: 2px;
+}
+.intro {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    color: yellowgreen;
+    background: url(https://images.unsplash.com/photo-1603337338447-473576414d25?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=2484&q=80);
+    background-size: cover;
+    background-position: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.typing {
+    position: relative;
+    font-size: 4rem;
+}
+
+
+/* cursor typing */
+.typing::after {
+    content: '';
+    position: absolute;
+    width: 1px;
+    height: 90%;
+    border-right: 2px solid yellowgreen;
+    animation: blink 0.4s infinite ease;
+}
+
+@keyframes blink {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
