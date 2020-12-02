@@ -1,37 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
     <title>3D Navigation Animation</title>
-</head>
-<body>
+  </head>
+  <body>
     <div class="container">
-        <nav>
-            <div class="nav__menu">
-                <h3 class="nav__logo">Brand<span>Name</span></h3>
-            <div class="nav__hamburger-menu">
-                <div class="hamburger__bar"></div>
-            </div>
-            </div>
-        </nav>
-
-        <div class="main__container">
-            <div class="main">
-                <header>
-                    <div class="overlay">
-                        <div class="inner">
-                            <h2 class="title">Future is here.</h2>
-                            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quisquam similique velit quos aspernatur quasi ducimus.</p>
-                            <button>Read more</button>
-                        </div>
-                    </div>
-                </header>
-            </div>
+      <nav>
+        <div class="nav__menu">
+          <h3 class="nav__logo">Brand<span>Name</span></h3>
+          <div class="nav__hamburger__menu">
+            <div class="hamburger__bar"></div>
+          </div>
         </div>
-    </div>
+      </nav>
+      <!-------------- Ended Nav ---------------> 
 
+      <div class="main__container">
+        <div class="main">
+          <header>
+            <div class="overlay">
+              <div class="inner">
+                <h2 class="title">Future is here.</h2>
+                <p>
+                  Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                  Quisquam similique velit quos aspernatur quasi ducimus.
+                </p>
+                <button>Read more</button>
+              </div>
+            </div>
+          </header>
+        </div>
+        <!-------------- Ended Main --------------->             
+        <div class="shadow one"></div>
+        <div class="shadow two"></div>
+      </div>
+        <!-------------- Ended Main-Container ---------------> 
+ 
+
+      <div class="links">
+          <ul>
+              <li>
+                  <a href="#" style="--i: 0.05s">Home</a>
+              </li>
+              <li>
+                <a href="#" style="--i: 0.10s">Service</a>
+            </li>
+            <li>
+                <a href="#" style="--i: 0.15s">Portfolio</a>
+            </li>
+            <li>
+                <a href="#" style="--i: 0.20s">About</a>
+            </li>
+            <li>
+                <a href="#" style="--i: 0.25s">Contact</a>
+            </li>
+          </ul>
+      </div>
+        <!-------------- Links : Nav Menu Links ---------------> 
+
+    </div>
+      <!-------------- Container ---------------> 
     <script src="app.js"></script>
-</body>
+  </body>
 </html>

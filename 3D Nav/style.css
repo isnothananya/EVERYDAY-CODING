@@ -16,7 +16,10 @@ body {
     background-color: #485461;
     background-image: linear-gradient(135deg, #485461 0%, #28313b 74%);
     overflow-x: hidden;
+    transform-style: preserve-3d;
 }
+
+/*------------------------------ Nav -------------------------------------- */
 
 nav {
     position: fixed;
@@ -50,7 +53,7 @@ nav {
     font-weight: 400;
 }
 
-.nav__hamburger-menu {
+.nav__hamburger__menu {
     height: 4rem;
     width: 3rem;
     cursor: pointer;
@@ -58,6 +61,8 @@ nav {
     justify-content:  flex-end;
     align-items: center ;
 }
+
+/*------------------------------ hamburger symbol -------------------------------------- */
 
 .hamburger__bar {
     width: 1.9rem;
@@ -68,9 +73,9 @@ nav {
     position: relative;
 }
 
-.hamburger__bar:before,
-.hamburger__bar:after {
-    content: ' ';
+.hamburger__bar::before,
+.hamburger__bar::after {
+    content: '';
     position: absolute;
     width: inherit;
     height: inherit ;
@@ -78,13 +83,15 @@ nav {
     transition: 0.5s;
 }
 
-.hamburger__bar:before {
+.hamburger__bar::before {
     transform: translateY(-9px);
 }
 
-.hamburger__bar:after {
+.hamburger__bar::after {
     transform: translateY(9px);
 }
+
+/*------------------------------ Main -------------------------------------- */
 
 .main {
     position: relative;
@@ -92,6 +99,9 @@ nav {
     left: 0;
     z-index: 5;
     overflow: hidden;
+    transform-origin: left;
+    transform-style: preserve-3d;
+    transition: 0.5s;
 }
 
 header {
@@ -135,3 +145,178 @@ button {
     cursor: pointer;
     text-decoration: none;
 }
+
+/*------------------------------ Hamburger - Menu to X -------------------------------------- */
+.container.active .hamburger__bar {
+    /* transform: rotate(360deg); */
+    background-color: transparent;
+}
+
+.container.active .hamburger__bar::before {
+    transform: translateY(0) rotate(45deg); 
+}
+
+.container.active .hamburger__bar::after {
+    transform: translateY(0) rotate(-45deg); 
+}
+
+/*------------------------------ -Scale main after click hamburger  -------------------------------------- */
+
+.container.active .main{
+    animation: main-animation 0.5s ease;
+    cursor: pointer;
+    transform: perspective(1300px) rotateY(20deg) translateZ(310px) scale(0.5);
+}
+
+@keyframes main-animation {
+    from {
+        transform: translate(0);
+    }
+    to{
+        transform: perspective(1300px) rotateY(20deg) translateZ(310px) scale(0.5);
+
+    }
+}
+
+/*------------------------------ Nav - Side-Menu -------------------------------------- */
+
+.links {
+    position: absolute;
+    width: 30%;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.links ul li {
+    list-style: none;
+}
+
+.links ul li a {
+    text-decoration: none;
+    color: #eee;
+    padding: 0.7rem 0;
+    display: inline-block;
+    font-size: 1rem;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: 0.3s;
+    opacity: 0;
+    transform: translateY(10px)
+}
+
+.links ul li a:hover {
+    color: #fff;
+    animation: hide 0.5s forwards ease;
+}
+
+/* var(--i) delay appear */
+.container.active .links a {
+    animation: appear 0.5s forwards ease var(--i);
+}
+
+@keyframes appear {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0px);
+    }
+}
+
+@keyframes hide {
+    from {
+        opacity: 1;
+        transform: translateY(0px);
+    }
+
+    to {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+}
+
+/*------------------------------ Shadow -------------------------------------- */
+
+.shadow {
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    transform-style: preserve-3d;
+    transform-origin: left;
+    transition: 0.5s;
+    background-color: #fff;
+}
+
+.shadow.one {
+    z-index: -1;
+    opacity: 0.15;
+
+}
+
+.shadow.two {
+    z-index: -2;
+    opacity: 0.1;
+}
+
+/*------------------------------ Shadow layer-1 -------------------------------------- */
+
+ .container.active .shadow.one {
+    animation: shadow-one 0.6s ease-out;
+    transform: perspective(1300px) rotateY(20deg) translateZ(215px) scale(0.5);
+ }
+
+ @keyframes shadow-one  {
+    0% {
+        transform: translate(0);
+    }
+    5% {
+        transform: perspective(1300px) rotateY(20deg) translateZ(310px) scale(0.5);
+    }
+
+    100% {
+        transform: perspective(1300px) rotateY(20deg) translateZ(215px) scale(0.5);
+    }
+ }
+
+/*------------------------------ Shadow layer-2 -------------------------------------- */
+
+ .container.active .shadow.two {
+    animation: shadow-two 0.6s ease-out;
+    transform: perspective(1300px) rotateY(20deg) translateZ(120px) scale(0.5);
+ }
+
+ @keyframes shadow-two  {
+    0% {
+        transform: translate(0);
+    }
+    20% {
+        transform: perspective(1300px) rotateY(20deg) translateZ(310px) scale(0.5);
+    }
+
+    100% {
+        transform: perspective(1300px) rotateY(20deg) translateZ(120px) scale(0.5);
+    }
+ }
+
+
+ /*------------------------------ Main + Shadow interactive when mouse hover -------------------------------------- */
+
+ .container.active .main:hover + .shadow.one {
+    transform: perspective(1300px) rotateY(20deg) translateZ(230px) scale(0.5);
+ }
+
+ .container.active .main:hover{
+    transform: perspective(1300px) rotateY(20deg) translateZ(340px) scale(0.5);
+ }
