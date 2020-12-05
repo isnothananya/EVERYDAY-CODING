@@ -505,6 +505,7 @@ img {
 
     .nav__list {
         display: flex;
+        font-size: var(--small-font-size);
     }
 
     .nav__item {
